@@ -118,8 +118,8 @@ echo "Compiling new server..."
 make -j $CORES
 
 # bring server down
-echo "Shutting down server in x minutes..."
-$(screen -r worldserver && server shutdown $SERVERSHUTDOWNTIME)
+echo "Shutting down server in $SERVERSHUTDOWNTIME seconds..."
+screen -S worldserver -X stuff 'server shutdown $SERVERSHUTDOWNTIME Scheduled update^M'
 
 echo "Waiting for server to shutdown..."
 sleep $SERVERSHUTDOWNTIME
